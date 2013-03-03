@@ -1,7 +1,10 @@
+execute pathogen#infect()
+
 syntax on
 filetype plugin indent on
 
-colorscheme molokai
+set background=dark
+colorscheme solarized
 
 set cursorline
 
@@ -12,8 +15,6 @@ set modelines=0
 set autochdir
 
 set noswapfile
-
-execute pathogen#infect()
 
 set noeb vb t_vb=
 
