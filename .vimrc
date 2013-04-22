@@ -31,7 +31,9 @@ set autoindent
 set number
 set splitright
 
+
 nnoremap ; :
+nnoremap : ;
 
 inoremap jj <ESC>
 
@@ -48,6 +50,17 @@ inoremap <F7> <ESC>:cprevious<CR>a
 nnoremap <F7> :cprevious<CR>
 
 
+nnoremap <Up>      <NOP>
+nnoremap <Down>    <NOP>
+nnoremap <Left>    <NOP>
+nnoremap <Right>   <NOP>
+
+inoremap <Up>      <NOP>
+inoremap <Down>    <NOP>
+inoremap <Left>    <NOP>
+inoremap <Right>   <NOP>
+
+" inoremap <Tab><Tab> <C-p>
 
 nnoremap <leader>w <C-w>v<C-w>
 
@@ -56,3 +69,11 @@ match OverLength /\%81v.*/
 filetype on
 au BufNewFile,BufRead *.ums set filetype=ums
 au BufNewFile,BufRead *.imp set filetype=scheme
+au BufNewFile,BufRead *.smt set filetype=smalltalk
+
+"function! MiddleOfLine()
+"    let chars=system("echo '" . getline('.') . "' | wc -m | sed 's/[^0-9]//g'")/2
+"    exec "normal " . expand(chars) . "|"
+"endfunction
+
+"inoremap <C-m> <ESC>:call MiddleOfLine()<CR>i
