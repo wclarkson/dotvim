@@ -1,15 +1,19 @@
+" =====================
+" || NECESSARY SETUP ||
+" =====================
+
+set nocompatible
+
 call pathogen#infect()
 call pathogen#helptags()
 
+" ======================
+" || GENERAL SETTINGS ||
+" ======================
+
 syntax on
+
 filetype plugin indent on
-
-set background=dark
-colorscheme solarized
-
-set cursorline
-
-set nocompatible
 
 set modelines=0
 
@@ -17,7 +21,32 @@ set autochdir
 
 set noswapfile
 
+filetype on
+
+" ===================
+" || LOOK AND FEEL ||
+" ===================
+
+set background=dark
+
+colorscheme solarized
+
+set cursorline
+
+set number
+
+" no visual bell
 set noeb vb t_vb=
+
+set laststatus=2
+
+" highlight lines over 80 characters
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929 
+match OverLength /\%81v.*/
+
+" =============
+" || EDITING ||
+" =============
 
 set textwidth=80
 set lw=80
@@ -26,52 +55,39 @@ set wrap
 set tabstop=4
 set shiftwidth=4
 set expandtab
+set smarttab
 
 set autoindent
 
 set backspace=2
 
-set number
 set splitright
 
-set laststatus=2
+" ==============
+" || MAPPINGS ||
+" ==============
 
 nnoremap ; :
 nnoremap : ;
 
-inoremap jj <ESC>
+" sudo write protected file without reopening
+cmap w!! w !sudo tee % >/dev/null
 
-inoremap <F12> <ESC>:w<CR>a
-nnoremap <F12> :w<CR>
+" =========================
+" || SYNTAX HIGHLIGHTING ||
+" =========================
 
-inoremap <F11> <ESC>:make<CR>a
-nnoremap <F11> :make<CR>
+au BufNewFile,BufRead *.ums set filetype=ums
+au BufNewFile,BufRead *.imp set filetype=scheme
+au BufNewFile,BufRead *.smt set filetype=smalltalk
 
-inoremap <F8> <ESC>:cnext<CR>a
-nnoremap <F8> :cnext<CR>
-
-inoremap <F7> <ESC>:cprevious<CR>a
-nnoremap <F7> :cprevious<CR>
-
+" disable arrow keys
 nnoremap <Up>      <NOP>
 nnoremap <Down>    <NOP>
 nnoremap <Left>    <NOP>
 nnoremap <Right>   <NOP>
-
 inoremap <Up>      <NOP>
 inoremap <Down>    <NOP>
 inoremap <Left>    <NOP>
 inoremap <Right>   <NOP>
-
-nnoremap <leader>w <C-w>v<C-w>
-
-"sudo write protected file
-cmap w!! w !sudo tee % >/dev/null
-
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929 
-match OverLength /\%81v.*/
-filetype on
-au BufNewFile,BufRead *.ums set filetype=ums
-au BufNewFile,BufRead *.imp set filetype=scheme
-au BufNewFile,BufRead *.smt set filetype=smalltalk
 
