@@ -19,6 +19,10 @@
 [submodule "bundle/snipmate"]
 	path = bundle/snipmate
 	url = git://github.com/msanders/snipmate.vim
+    ignore = dirty
 [submodule "bundle/surround"]
 	path = bundle/surround
 	url = git://github.com/tpope/vim-surround.git
+[submodule "bundle/gravity"]
+	path = bundle/gravity
+	url = git://github.com/wclarkson/gravity.git
