@@ -4,6 +4,8 @@
 
 set nocompatible
 
+set shell=/bin/sh
+
 call pathogen#infect()
 call pathogen#helptags()
 
@@ -40,9 +42,14 @@ set noeb vb t_vb=
 
 set laststatus=2
 
-" highlight lines over 80 characters
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929 
-match OverLength /\%81v.*/
+" change background character outside 80 characters
+let &colorcolumn=join(range(81,999),",")
+highlight ColorColumn ctermbg=black
+
+" enable vim powerline
+set encoding=utf-8
+set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
+let g:Powerline_symbols="fancy"
 
 " =============
 " || EDITING ||
@@ -52,8 +59,8 @@ set textwidth=80
 set lw=80
 set wrap
 
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set expandtab
 set smarttab
 
@@ -62,6 +69,8 @@ set autoindent
 set backspace=2
 
 set splitright
+
+let delimitMate_expand_cr = 1
 
 " ==============
 " || MAPPINGS ||
@@ -80,6 +89,7 @@ cmap w!! w !sudo tee % >/dev/null
 au BufNewFile,BufRead *.ums set filetype=ums
 au BufNewFile,BufRead *.imp set filetype=scheme
 au BufNewFile,BufRead *.smt set filetype=smalltalk
+au BufNewFile,BufRead *.fish set filetype=fish
 
 " disable arrow keys
 nnoremap <Up>      <NOP>
